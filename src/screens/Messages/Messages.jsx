@@ -23,13 +23,16 @@ const InnerWrapper = styled.div`
     justify-content: flex-start;
 `;
 
-const Messages = () => (
-  <Wrapper>
-    <InnerWrapper>
-      <Lobby messages={data} />
-      <MessageInput />
-    </InnerWrapper>
-  </Wrapper>
-);
+const Messages = () => {
+  const addMessage = (message) => console.log(message);
+  return (
+    <Wrapper>
+      <InnerWrapper>
+        <Lobby messages={data} />
+        <MessageInput dispatchAddMessage={addMessage} />
+      </InnerWrapper>
+    </Wrapper>
+  );
+};
 
 export default Messages;
