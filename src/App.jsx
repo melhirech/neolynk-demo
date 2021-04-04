@@ -1,12 +1,14 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 
 import MessagesScreen from 'screens/Messages';
+import store from 'store';
 
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <MessagesScreen />
-    </div>
+    </Provider>
   );
 }
 
