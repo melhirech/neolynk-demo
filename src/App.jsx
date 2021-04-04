@@ -1,9 +1,11 @@
 import React from 'react';
 
+import MessagesScreen from 'screens/Messages';
+
 function App() {
   return (
-    <div className="App">
-      Hello App !
+    <div>
+      <MessagesScreen />
     </div>
   );
 }
