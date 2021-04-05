@@ -25,6 +25,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-static": "react-scripts test -- --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .jsx,.js --fix"
   },
@@ -47,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.12.13",
     "eslint": "^7.23.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
