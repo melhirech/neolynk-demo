@@ -11,4 +11,4 @@ Execute `yarn test` or `npm run tests`
 
 * **Building for production**
 Run `yarn build --production` or `npm run build --production`
-This should build the app. Generated build files can be found under __/dist__ folder.
+This should build the app. Generated build files can be found under __/build__ folder.
