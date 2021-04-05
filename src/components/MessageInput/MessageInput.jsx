@@ -49,6 +49,7 @@ const MessageInput = ({ dispatchAddMessage, loading }) => {
         label="Message"
         placeholder="Add new message..."
         variant="outlined"
+        inputProps={{ 'data-testid': 'message-input' }}
         onChange={(event) => setContent(event.target.value)}
         value={content}
         rows={5}
@@ -63,6 +64,7 @@ const MessageInput = ({ dispatchAddMessage, loading }) => {
               onChange={() => setIsPublic(!isPublic)}
               name="visibility"
               color="primary"
+              data-testid="visibility-switch"
             />
         )}
           label="Public"
@@ -72,6 +74,7 @@ const MessageInput = ({ dispatchAddMessage, loading }) => {
           color="primary"
           type="submit"
           disabled={!content || loading}
+          data-testid="submit-button"
         >
           {loading ? 'Sending...' : 'Send'}
         </Button>

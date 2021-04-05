@@ -15,11 +15,16 @@ const Wrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-    width: 664px;
+    width: 680px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    padding: 32px;
+    @media (max-width: 680px) {
+      width: 100%;
+      padding: 16px;
+    }
 `;
 
 const Messages = () => {
@@ -33,7 +38,7 @@ const Messages = () => {
   return (
     <Wrapper>
       <InnerWrapper>
-        <Lobby messages={messagesStore.data} />
+        <Lobby messages={messagesStore.data} loading={messagesStore.fetchingMessages} />
         <MessageInput
           dispatchAddMessage={(msg) => addMessage(msg)(dispatch)}
           loading={messagesStore.addingMessage}

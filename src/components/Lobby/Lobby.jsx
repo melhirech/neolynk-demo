@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { arrayOf, shape } from 'prop-types';
+import { arrayOf, shape, bool } from 'prop-types';
 import styled from 'styled-components';
 import {
   IconButton, List, Divider, CircularProgress,
 } from '@material-ui/core';
-import SettingsIcon from '@material-ui/icons/Settings';
+import FilterListIcon from '@material-ui/icons/FilterList';
 
 import Message from 'components/Message';
 import Preferences from 'components/Preferences';
@@ -23,6 +23,7 @@ const MessagesWrapper = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-bottom: 32px;
 `;
 
 const Header = styled.div`
@@ -41,7 +42,11 @@ const Messages = styled(List)`
   width: 100%;
 `;
 
-const Lobby = ({ messages }) => {
+const FilterCaption = styled.span`
+  padding: 0px 8px;
+`;
+
+const Lobby = ({ messages, loading }) => {
   const [isOpen, openPreferences] = useState(false);
 
   return (
@@ -53,16 +58,16 @@ const Lobby = ({ messages }) => {
           component="span"
           onClick={() => openPreferences(true)}
         >
-          Settings
-          <SettingsIcon />
+          <FilterCaption>Filter</FilterCaption>
+          <FilterListIcon />
         </IconButton>
       </Header>
       <Preferences open={isOpen} handleClose={() => openPreferences(false)} />
       <MessagesWrapper>
         {
-        messages.fetchingMessages && <CircularProgress />
+        loading && <CircularProgress />
       }
-        {!messages.fetchingMessages && (
+        {!loading && (
         <Messages>
           {messages.map((messageData) => (
             <div key={messageData.id}>
@@ -79,6 +84,7 @@ const Lobby = ({ messages }) => {
 
 Lobby.propTypes = {
   messages: arrayOf(shape({})).isRequired,
+  loading: bool.isRequired,
 };
 
 export default Lobby;
