@@ -7,7 +7,7 @@ Check out the live [demo](https://neolynk-demo--pr3-develop-iqffldpu.web.app).
 3. You should be able to see the app working at http://localhost:3000
 
 * **To run the tests**
-Execute `yarn test` or `npm run tests`
+Execute `yarn test` or `npm run test`
 
 * **Building for production**
 Run `yarn build --production` or `npm run build --production`
