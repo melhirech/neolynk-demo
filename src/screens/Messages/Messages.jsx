@@ -38,7 +38,11 @@ const Messages = () => {
   return (
     <Wrapper>
       <InnerWrapper>
-        <Lobby messages={messagesStore.data} loading={messagesStore.fetchingMessages} />
+        <Lobby
+          messages={messagesStore.data}
+          loading={messagesStore.fetchingMessages}
+          dispatchFetchMessages={(filter) => fetchMessages(filter)(dispatch)}
+        />
         <MessageInput
           dispatchAddMessage={(msg) => addMessage(msg)(dispatch)}
           loading={messagesStore.addingMessage}

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { arrayOf, shape, bool } from 'prop-types';
+import {
+  arrayOf, shape, bool, func,
+} from 'prop-types';
 import styled from 'styled-components';
 import {
   IconButton, List, Divider, CircularProgress,
@@ -46,8 +48,16 @@ const FilterCaption = styled.span`
   padding: 0px 8px;
 `;
 
-const Lobby = ({ messages, loading }) => {
+const Lobby = ({ messages, loading, dispatchFetchMessages }) => {
   const [isOpen, openPreferences] = useState(false);
+
+  const filterMessages = (filter) => {
+    // call messages api woth filter
+    dispatchFetchMessages(filter);
+
+    // close modal
+    openPreferences(false);
+  };
 
   return (
     <LobbyWrapper>
@@ -63,7 +73,7 @@ const Lobby = ({ messages, loading }) => {
           <FilterListIcon />
         </IconButton>
       </Header>
-      <Preferences open={isOpen} handleClose={() => openPreferences(false)} />
+      <Preferences open={isOpen} handleClose={filterMessages} />
       <MessagesWrapper>
         {loading && <CircularProgress data-testid="loader" />}
         {!loading && (
@@ -84,6 +94,7 @@ const Lobby = ({ messages, loading }) => {
 Lobby.propTypes = {
   messages: arrayOf(shape({})).isRequired,
   loading: bool.isRequired,
+  dispatchFetchMessages: func.isRequired,
 };
 
 export default Lobby;

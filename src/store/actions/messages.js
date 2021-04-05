@@ -6,12 +6,12 @@ import {
 
 const endpoint = '/messages';
 
-export function fetchMessages() {
+export function fetchMessages(filter = 'all') {
   return async function fetchMessagesAsync(dispatch) {
     dispatch(fetchMessagesStart());
 
     try {
-      const response = await axios.get(endpoint);
+      const response = await axios.get(`${endpoint}?filter=${filter}`);
       dispatch(fetchMessagesSuccess(response.data));
     } catch (error) {
       dispatch(fetchMessagesError(error.message));
