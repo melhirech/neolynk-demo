@@ -1,5 +1,5 @@
 ## NEOLYNK DEMO
-Check out the live [demo](https://neolynk-demo--pr3-develop-iqffldpu.web.app).
+Check out the live [demo](https://neolynk-demo.web.app).
 
 * **To run the app locally**
 1. Install dependencies using by typing: `yarn` or `npm install`
