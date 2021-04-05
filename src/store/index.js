@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import { messagesReducer } from './reducers';
 
 // root reducer
-const rootReducer = combineReducers({ messagesReducer });
+const rootReducer = combineReducers({ messages: messagesReducer });
 
 // use redux dev tools
 const composeEnhancers = typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

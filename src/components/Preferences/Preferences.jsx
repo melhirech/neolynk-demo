@@ -16,6 +16,10 @@ const Visibility = styled.div`
     justify-content: space-evenly;
 `;
 
+const Options = styled(Select)`
+    margin: 8px 32px;
+`;
+
 const Transition = React.forwardRef((props, ref) => <Slide direction="up" ref={ref} {...props} />);
 
 const Preferences = ({ open, handleClose }) => (
@@ -31,11 +35,17 @@ const Preferences = ({ open, handleClose }) => (
       <DialogContent>
         <Visibility>
           <InputLabel id="label">Visibility</InputLabel>
-          <Select labelId="label" id="select" value="20">
+          <Options
+            labelId="label"
+            id="select"
+            value="all"
+            variant="outlined"
+            fullWidth
+          >
             <MenuItem value="all">All</MenuItem>
             <MenuItem value="public">Public</MenuItem>
             <MenuItem value="private">Private</MenuItem>
-          </Select>
+          </Options>
         </Visibility>
       </DialogContent>
       <DialogActions>

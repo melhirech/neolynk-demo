@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { arrayOf, shape } from 'prop-types';
 import styled from 'styled-components';
 import {
-  IconButton, List, Divider,
+  IconButton, List, Divider, CircularProgress,
 } from '@material-ui/core';
 import SettingsIcon from '@material-ui/icons/Settings';
 
@@ -22,6 +22,7 @@ const MessagesWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
 `;
 
 const Header = styled.div`
@@ -34,6 +35,10 @@ const Header = styled.div`
 
 const Title = styled.h2`
   font-weight: bold;
+`;
+
+const Messages = styled(List)`
+  width: 100%;
 `;
 
 const Lobby = ({ messages }) => {
@@ -54,14 +59,19 @@ const Lobby = ({ messages }) => {
       </Header>
       <Preferences open={isOpen} handleClose={() => openPreferences(false)} />
       <MessagesWrapper>
-        <List>
+        {
+        messages.fetchingMessages && <CircularProgress />
+      }
+        {!messages.fetchingMessages && (
+        <Messages>
           {messages.map((messageData) => (
-            <>
+            <div key={messageData.id}>
               <Message message={messageData} />
               <Divider variant="inset" component="li" />
-            </>
+            </div>
           ))}
-        </List>
+        </Messages>
+        )}
       </MessagesWrapper>
     </LobbyWrapper>
   );

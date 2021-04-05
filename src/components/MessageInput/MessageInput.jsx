@@ -3,7 +3,8 @@ import {
   TextField, Button, FormControlLabel, Switch,
 } from '@material-ui/core';
 import styled from 'styled-components';
-import { func } from 'prop-types';
+import { func, bool } from 'prop-types';
+import faker from 'faker';
 
 const MessageForm = styled.div`
     width: 100%;
@@ -22,15 +23,25 @@ const Controls = styled.form`
     margin: 16px 8px;
 `;
 
-const MessageInput = ({ dispatchAddMessage }) => {
+const MessageInput = ({ dispatchAddMessage, loading }) => {
   const [content, setContent] = useState('');
   const [isPublic, setIsPublic] = useState(false);
 
   const submitMessage = (event) => {
     event.preventDefault();
+    if (!content.trim()) return;
 
-    const newMessage = { content, isPublic };
+    const randomImageId = Math.floor(Math.random() * 50);
+
+    const newMessage = {
+      name: faker.name.findName(),
+      picture: `https://i.pravatar.cc/150?img==${randomImageId}`,
+      timestamp: Date.now(),
+      content,
+      isPublic,
+    };
     dispatchAddMessage(newMessage);
+    setContent(''); // empty message input
   };
   return (
     <MessageForm onSubmit={submitMessage}>
@@ -56,8 +67,13 @@ const MessageInput = ({ dispatchAddMessage }) => {
         )}
           label="Public"
         />
-        <Button variant="contained" color="primary" type="submit">
-          Send
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          disabled={!content || loading}
+        >
+          {loading ? 'Sending...' : 'Send'}
         </Button>
       </Controls>
     </MessageForm>
@@ -66,6 +82,7 @@ const MessageInput = ({ dispatchAddMessage }) => {
 
 MessageInput.propTypes = {
   dispatchAddMessage: func.isRequired,
+  loading: bool.isRequired,
 };
 
 export default MessageInput;
