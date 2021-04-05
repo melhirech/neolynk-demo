@@ -23,7 +23,6 @@ module.exports = {
   plugins: [
     'react',
     'jest',
-    '@babel/plugin-syntax-jsx',
   ],
   ignorePatterns: ['reportWebVitals.js', 'index.jsx'],
   rules: {

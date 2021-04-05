@@ -26,7 +26,7 @@ const Message = ({ message }) => {
   return (
     <ListItem alignItems="flex-start">
       <ListItemAvatar>
-        <Avatar alt="Avatar" src={picture} />
+        <Avatar alt="Avatar" src={picture} data-testid="avatar" />
       </ListItemAvatar>
       <ListItemText
         primary={(
