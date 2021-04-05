@@ -57,6 +57,7 @@ const Lobby = ({ messages, loading }) => {
           color="primary"
           component="span"
           onClick={() => openPreferences(true)}
+          data-testid="filter-button"
         >
           <FilterCaption>Filter</FilterCaption>
           <FilterListIcon />
@@ -64,11 +65,9 @@ const Lobby = ({ messages, loading }) => {
       </Header>
       <Preferences open={isOpen} handleClose={() => openPreferences(false)} />
       <MessagesWrapper>
-        {
-        loading && <CircularProgress />
-      }
+        {loading && <CircularProgress data-testid="loader" />}
         {!loading && (
-        <Messages>
+        <Messages data-testid="messages-list">
           {messages.map((messageData) => (
             <div key={messageData.id}>
               <Message message={messageData} />
