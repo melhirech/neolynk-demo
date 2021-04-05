@@ -16,8 +16,8 @@ Check out the live [demo](https://neolynk-demo.web.app).
 * **Deployment and Firebase Hosting service**
 This app uses Github CI for automatic deployment. Once a PR is merged with the main brnach, the CI workflow will execute necessary steps and deploy the app to Firebase Hosting.
 
-* *Side note*
-It is worth noting that this app rely on a simple Firebase API that exposes the following endpoints.
+* **Side note**
+> It is worth noting that this app rely on a simple Firebase API that exposes the following endpoints.
 
 | Endpoint                   | Method            | Description         |
 | -------------------------- |:-----------------:| ------------------: |
