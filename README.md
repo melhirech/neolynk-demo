@@ -1,5 +1,5 @@
 ## NEOLYNK DEMO
-Check out the live [demo](http://www.domain.com).
+Check out the live [demo](http://www.firebase.com).
 
 * **To run the app locally**
 1. Install dependencies using by typing: `yarn` or `npm install`
