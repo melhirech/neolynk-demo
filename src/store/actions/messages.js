@@ -7,7 +7,7 @@ import {
 const endpoint = '/messages';
 
 export function fetchMessages() {
-  return async function (dispatch) {
+  return async function fetchMessagesAsync(dispatch) {
     dispatch(fetchMessagesStart());
 
     try {
@@ -20,15 +20,13 @@ export function fetchMessages() {
 }
 
 export function addMessage(message) {
-  return async function (dispatch) {
+  return async function addMessageAssync(dispatch) {
     dispatch(addMessageStart());
 
     try {
       const response = await axios.post(endpoint, message);
-      console.log(response.data);
       dispatch(addMessageSuccess(response.data));
     } catch (error) {
-      console.log(error);
       dispatch(addMessageError(error.message));
     }
   };
