@@ -1,6 +1,6 @@
 import React from 'react';
 import { shape, string } from 'prop-types'; import {
-  ListItem, ListItemAvatar, Avatar, ListItemText,
+  ListItem, ListItemAvatar, Avatar, ListItemText, Chip,
 } from '@material-ui/core';
 import styled from 'styled-components';
 import moment from 'moment';
@@ -16,11 +16,12 @@ const Header = styled.div`
 const Time = styled.span`
   color: grey;
   font-size: 0.8em;
+  margin-right: 8px;
 `;
 
 const Message = ({ message }) => {
   const {
-    content, name, picture, timestamp,
+    content, name, picture, timestamp, isPublic,
   } = message;
 
   return (
@@ -32,7 +33,14 @@ const Message = ({ message }) => {
         primary={(
           <Header>
             <p>{name}</p>
-            <Time>{moment(timestamp).fromNow()}</Time>
+            <div>
+              <Time>{moment(timestamp).fromNow()}</Time>
+              <Chip
+                color={isPublic ? 'default' : 'primary'}
+                label={isPublic ? 'Public' : 'Private'}
+                size="small"
+              />
+            </div>
           </Header>
         )}
         secondary={content}
