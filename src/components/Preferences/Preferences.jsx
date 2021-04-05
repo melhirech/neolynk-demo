@@ -3,7 +3,7 @@ import {
   DialogTitle, InputLabel,
   Select, Button,
   Dialog, DialogActions,
-  DialogContent, MenuItem, Slide,
+  DialogContent, MenuItem,
 } from '@material-ui/core';
 import { bool, func } from 'prop-types';
 import styled from 'styled-components';
@@ -20,15 +20,12 @@ const Options = styled(Select)`
     margin: 8px 32px;
 `;
 
-const Transition = React.forwardRef((props, ref) => <Slide direction="up" ref={ref} {...props} />);
-
 const Preferences = ({ open, handleClose }) => {
   const [filter, setFilter] = useState('all');
   return (
     <div>
       <Dialog
         open={open}
-        TransitionComponent={Transition}
         onClose={() => handleClose(filter)}
         keepMounted
         fullWidth
