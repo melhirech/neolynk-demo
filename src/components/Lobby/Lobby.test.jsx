@@ -10,7 +10,7 @@ describe('Lobby', () => {
   });
 
   it('should have a header with caption && filter button', () => {
-    render(<Lobby messages={data} loading={false} />);
+    render(<Lobby messages={data} dispatchFetchMessages={() => null} loading={false} />);
 
     const caption = screen.getByText(/messages/i);
     const button = screen.getByTestId('filter-button');
@@ -20,7 +20,7 @@ describe('Lobby', () => {
   });
 
   it('should show a loader when messages are loading', () => {
-    render(<Lobby messages={data} loading />);
+    render(<Lobby messages={data} dispatchFetchMessages={() => null} loading />);
 
     const loader = screen.getByTestId('loader');
 
@@ -28,7 +28,7 @@ describe('Lobby', () => {
   });
 
   it('should show messages when done loading', () => {
-    render(<Lobby messages={data} loading={false} />);
+    render(<Lobby messages={data} dispatchFetchMessages={() => null} loading={false} />);
 
     const messagesList = screen.getByTestId('messages-list');
 
